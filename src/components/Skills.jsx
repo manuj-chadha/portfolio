@@ -1,64 +1,44 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+import { SkillsInfo } from "../constants";
+import colorSharp from "../assets/img/color-sharp.png";
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
-
   return (
-    <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>Skills</h2>
-                        <p>Proficient in Spring Boot, React, and MongoDB,<br></br> with a strong foundation in Data Structures & Algorithms and experience in the MERN stack.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Java Full Stack</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>DSA</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>MERN Stack</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                        </Carousel>
-                    </div>
-                </div>
-            </div>
+    <section className="relative py-12 px-4 sm:px-6 lg:px-8" id="skills">
+      <div className="container mx-auto">
+        <div className="text-center my-12 sm:my-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Skills</h2>
+          <p className="text-gray-600 mt-4 max-w-xl mx-auto text-sm sm:text-base">
+            Proficient in Spring Boot, React, and MongoDB, with a strong foundation in Data Structures & Algorithms and experience in the MERN stack.
+          </p>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 px-2 sm:px-4 md:px-12">
+          {SkillsInfo.map((category) => (
+            <div key={category.title} className="rounded-2xl p-4 shadow-md">
+              <h5 className="text-lg sm:text-xl font-semibold text-center mb-4 text-gray-700">{category.title}</h5>
+              <div className="grid grid-cols-3 gap-4 items-center justify-items-center px-4 sm:px-6">
+                {category.skills.map((skill) => (
+                  <div key={skill.name} className="flex flex-col items-center text-center">
+                    <img
+                      loading="lazy"
+                      src={skill.logo}
+                      alt={`${skill.name} logo`}
+                      className="w-8 h-8 object-contain mb-1"
+                    />
+                    <p className="text-xs sm:text-sm text-gray-600">{skill.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <img
+        className="absolute left-0 bottom-0 w-1/2 sm:w-1/3 opacity-20 pointer-events-none"
+        src={colorSharp}
+        alt="Background"
+      />
     </section>
-  )
-}
+  );
+};

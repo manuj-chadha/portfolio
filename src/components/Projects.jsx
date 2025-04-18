@@ -1,8 +1,8 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/next-career.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+import projImg2 from "../assets/img/fotographiya.png";
+import projImg3 from "../assets/img/portfolio.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -11,34 +11,34 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "Job Portal",
-      description: "Design & Development",
+      title: "Next Career",
+      description: "Job Portal Website",
       imgUrl: projImg1,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "Personal Portfolio",
+      description: "Portfolio Website",
       imgUrl: projImg3,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "Fotographiya",
+      description: "Photography Website",
+      imgUrl: projImg2,
+    },
+    {
+      title: "Next Career",
+      description: "Job Portal Website",
       imgUrl: projImg1,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      title: "Personal Portfolio",
+      description: "Portfolio Website",
+      imgUrl: projImg3,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
+      title: "Fotographiya",
+      description: "Photography Website",
+      imgUrl: projImg2,
     },
   ];
 
@@ -51,7 +51,7 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>I have built multiple creative and technically sound projects in web development and full-stack engineering. My work includes following mentioned projects. These projects demonstrate my grasp of frontend design, backend logic, and modern development practices, reflecting my passion for building meaningful digital experiences.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
