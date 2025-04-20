@@ -18,7 +18,7 @@ export const Footer = () => {
             <MailchimpForm />
           </div>
 
-          <div className="mt-42 lg:mt-36 flex flex-col lg:flex-row w-full justify-between items-center0">
+          <div className="mt-48 lg:mt-36 flex flex-col lg:flex-row w-full justify-between items-center0">
             {/* Center: Name or Logo */}
           <div className="w-full lg:w-fit text-center">
             <h1 className="text-white text-2xl font-bold lg:text-start mb-2">Manuj Chadha</h1>
