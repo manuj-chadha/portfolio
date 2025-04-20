@@ -28,7 +28,7 @@ export const NavBar = () => {
 
   return (
     <Router>
-      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-300 ease-in-out ${scrolled ? "bg-[#121212] py-0" : "py-1"} px-4`}>
+      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-300 ease-in-out max-md:!pt-3 ${scrolled ? "bg-[#121212] py-0" : "py-1"} px-4`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="text-white font-bold text-3xl max-md:text-2xl">
@@ -36,7 +36,7 @@ export const NavBar = () => {
           </a>
 
           {/* Toggler for Mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden flex flex-col items-center">
             <button
               onClick={() => setToggleMenu(!toggleMenu)}
               className="text-white focus:outline-none relative w-6 h-4"

@@ -185,6 +185,7 @@ p.danger {
   opacity: 0;
   width: 100%;
 }
+
 .proj-imgbx:hover .proj-txtx {
   top: 50%;
   opacity: 1;
@@ -223,3 +224,9 @@ a:hover {
   text-decoration: none !important;
 }
 
+
+.proj-txtx a{
+  color: white;
+  padding-top: 15px;
+  text-decoration: underline;
+}

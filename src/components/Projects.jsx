@@ -13,16 +13,19 @@ export const Projects = () => {
     {
       title: "Next Career",
       description: "Job Portal Website",
+      url: "https://next-career-ten.vercel.app/",
       imgUrl: projImg1,
     },
     {
       title: "Personal Portfolio",
       description: "Portfolio Website",
+      url: "https://portfolio-livid-five-27.vercel.app/",
       imgUrl: projImg3,
     },
     {
       title: "Fotographiya",
       description: "Photography Website",
+      url: "https://www.fotographiya.com/",
       imgUrl: projImg2,
     },
     // {

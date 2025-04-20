@@ -68,10 +68,10 @@ export const Banner = () => {
                   <p className="text-lg max-md:text-md text-gray-400 leading-7 mb-8">
                     Hi, I'm Manuj — a passionate Full-Stack Java Developer skilled in Spring Boot, React, and MongoDB. With a focus on functionality and seamless user experience, I build dynamic web solutions. I’m also proficient in Data Structures and Algorithms and have prior experience working with the MERN stack.
                   </p>
-                  <button className="text-white py-2 font-bold text-xl flex items-center space-x-2 hover:bg-blue-600 transition">
+                  <a href="#connect" className="text-white py-2 font-bold text-lg flex items-center space-x-2 transition">
                     <span>Let’s Connect</span>
-                    <ArrowRightCircle size={25} />
-                  </button>
+                    <ArrowRightCircle size={20} />
+                  </a>
                 </div>
               }
             </TrackVisibility>
