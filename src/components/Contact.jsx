@@ -27,7 +27,7 @@ export const Contact = () => {
     e.preventDefault();
     setButtonText("Sending...");
     try {
-      let response = await fetch("http://localhost:8080/api/contact", {
+      let response = await fetch("https://portfolio-backend-vulg.onrender.com/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
