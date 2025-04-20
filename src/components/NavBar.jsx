@@ -94,7 +94,7 @@ export const NavBar = () => {
                   className="relative w-[42px] h-[42px] group-hover:text-black rounded-full bg-white/10 border border-white/50 flex items-center justify-center overflow-hidden group"
                 >
                   <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out rounded-full z-0" />
-                  <img src={item.icon} alt="" className="max-w-[40%] z-10 relative transition-all duration-300" />
+                  <img src={item.icon} alt="" className="max-w-[40%] z-10 relative transition-all duration-300 filter group-hover:invert" />
                 </a>
               ))}
             </div>

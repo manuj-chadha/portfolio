@@ -3,7 +3,7 @@ import colorSharp from "../assets/img/color-sharp.png";
 
 export const Skills = () => {
   return (
-    <section className="relative py-12 px-4 sm:px-6 lg:px-8" id="skills">
+    <section className="relative py-12 px-4 sm:px-6 lg:px-8 max-md:py-3" id="skills">
       <div className="container mx-auto">
         <div className="text-center my-12 sm:my-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Skills</h2>
@@ -14,7 +14,7 @@ export const Skills = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 px-2 sm:px-4 md:px-12">
           {SkillsInfo.map((category) => (
-            <div key={category.title} className="rounded-2xl p-4 shadow-md">
+            <div key={category.title} className="rounded-2xl shaded-xl bg-[#1b1a1a] !p-4 shadow-md !max-md:p-1">
               <h5 className="text-lg sm:text-xl font-semibold text-center mb-4 text-gray-700">{category.title}</h5>
               <div className="grid grid-cols-3 gap-4 items-center justify-items-center px-4 sm:px-6">
                 {category.skills.map((skill) => (
@@ -23,7 +23,7 @@ export const Skills = () => {
                       loading="lazy"
                       src={skill.logo}
                       alt={`${skill.name} logo`}
-                      className="w-8 h-8 object-contain mb-1"
+                      className="w-16 h-16 object-contain mb-1"
                     />
                     <p className="text-xs sm:text-sm text-gray-600">{skill.name}</p>
                   </div>

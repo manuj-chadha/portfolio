@@ -20,7 +20,7 @@ export const Banner = () => {
     }, delta);
 
     return () => { clearInterval(ticker) };
-  }, [text])
+  }, [text]);
 
   const tick = () => {
     let i = loopNum % toRotate.length;
@@ -45,33 +45,48 @@ export const Banner = () => {
     } else {
       setIndex(prevIndex => prevIndex + 1);
     }
-  }
+  };
 
   return (
-    <section className="banner" id="home">
+    <section className="banner bg-cover bg-center bg-no-repeat pt-40 pb-24 max-md:pb-4 bg-[url('/src/assets/img/banner-bg.png')]
+" id="home" >
       <Container>
-        <Row className="aligh-items-center">
+        <Row className="items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Manuj : )`} <br/> <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Coder", "Web Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Hi, I'm Manuj — a passionate Full-Stack Java Developer skilled in Spring Boot, React, and MongoDB. With a focus on functionality and seamless user experience, I build dynamic web solutions. I’m also proficient in Data Structures and Algorithms and have prior experience working with the MERN stack.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
-              </div>}
+                <div className={isVisible ? "animate__animated animate__fadeIn max-md:px-2" : ""}>
+                  <span className="tagline inline-block font-bold text-lg py-2 px-4 bg-gradient-to-r from-[#aa367c] to-[#4a2fbd] text-white mb-4">
+                    Welcome to my Portfolio
+                  </span>
+                  <div className="text-5xl max-md:text-3xl !font-extrabold leading-tight mb-3">
+                    {`Hi! I'm Manuj : )`} <br />
+                    <span className="txt-rotate inline-block text-5xl max-md:text-3xl text-white font-extrabold">
+                      <span className="wrap">{text}</span>
+                    </span>
+                  </div>
+                  <p className="text-lg max-md:text-md text-gray-400 leading-7 mb-8">
+                    Hi, I'm Manuj — a passionate Full-Stack Java Developer skilled in Spring Boot, React, and MongoDB. With a focus on functionality and seamless user experience, I build dynamic web solutions. I’m also proficient in Data Structures and Algorithms and have prior experience working with the MERN stack.
+                  </p>
+                  <button className="text-white py-2 font-bold text-xl flex items-center space-x-2 hover:bg-blue-600 transition">
+                    <span>Let’s Connect</span>
+                    <ArrowRightCircle size={25} />
+                  </button>
+                </div>
+              }
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
-                </div>}
+                  <img className="w-[95%] mx-auto animate-updown max-md:w-2/3 max-md:my-6" src={headerImg} alt="Header Img" />
+                </div>
+              }
             </TrackVisibility>
           </Col>
         </Row>
       </Container>
     </section>
-  )
-}
+  );
+};
