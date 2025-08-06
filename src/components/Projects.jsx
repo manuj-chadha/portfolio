@@ -2,19 +2,41 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/next-career.png";
 import projImg2 from "../assets/img/fotographiya.png";
-import projImg3 from "../assets/img/portfolio.png";
+import projImg3 from "../assets/img/weather.png";
+import dashboard from "../assets/img/dashboard_dark.png";
+
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
 
-  const projects = [
+  const projects1 = [
     {
       title: "Next Career",
       description: "Job Portal Website",
       url: "https://next-career-ten.vercel.app/",
       imgUrl: projImg1,
+    },
+    {
+      title: "Atmos",
+      description: "Weather App",
+      url: "https://atmos-murex.vercel.app/",
+      imgUrl: projImg3,
+    },
+    {
+      title: "Fotographiya",
+      description: "Photography Website",
+      url: "https://www.fotographiya.com/",
+      imgUrl: projImg2,
+    },
+  ];
+  const projects2 = [
+    {
+      title: "Admin Dashboard",
+      description: "Front-end Dashboard Website",
+      url: "https://admin-dashboard-manuj.vercel.app/",
+      imgUrl: dashboard,
     },
     {
       title: "Personal Portfolio",
@@ -28,21 +50,6 @@ export const Projects = () => {
       url: "https://www.fotographiya.com/",
       imgUrl: projImg2,
     },
-    // {
-    //   title: "Next Career",
-    //   description: "Job Portal Website",
-    //   imgUrl: projImg1,
-    // },
-    // {
-    //   title: "Personal Portfolio",
-    //   description: "Portfolio Website",
-    //   imgUrl: projImg3,
-    // },
-    // {
-    //   title: "Fotographiya",
-    //   description: "Photography Website",
-    //   imgUrl: projImg2,
-    // },
   ];
 
   return (
@@ -71,7 +78,7 @@ export const Projects = () => {
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
-                          projects.map((project, index) => {
+                          projects1.map((project, index) => {
                             return (
                               <ProjectCard
                                 key={index}
@@ -83,7 +90,18 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <Row>
+                        {
+                          projects2.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>

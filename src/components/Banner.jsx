@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/profile_pic.jpg";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { ArrowRightCircle, Download } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -68,9 +68,9 @@ export const Banner = () => {
                   <p className="text-lg max-md:text-md text-gray-400 leading-7 mb-8">
                     Hi, I'm Manuj — a passionate Full-Stack Java Developer skilled in Spring Boot, React, and MongoDB. With a focus on functionality and seamless user experience, I build dynamic web solutions. I’m also proficient in Data Structures and Algorithms and have prior experience working with the MERN stack.
                   </p>
-                  <a href="#connect" className="text-white py-2 font-bold text-lg flex items-center space-x-2 transition">
-                    <span>Let’s Connect</span>
-                    <ArrowRightCircle size={20} />
+                  <a href="https://drive.google.com/file/d/1J-D6VE2FS4EqQmIC35glxJzv2h5UECVO/view" className="text-white py-2 font-bold text-lg flex items-center space-x-2 transition">
+                    <span>Download my CV</span>
+                    <Download size={20} />
                   </a>
                 </div>
               }
