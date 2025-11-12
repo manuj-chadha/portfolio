@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-
+import viteImagemin from 'vite-plugin-imagemin';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,5 +9,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    viteImagemin({
+      mozjpeg: { quality: 75 },
+      pngquant: { quality: [0.6, 0.8] },
+      webp: { quality: 75 },
+    }),
   ],
 })
