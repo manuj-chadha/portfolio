@@ -1,9 +1,11 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/next-career.png";
-import projImg2 from "../assets/img/fotographiya.png";
-import projImg3 from "../assets/img/weather.png";
-import dashboard from "../assets/img/dashboard_dark.png";
+import projImg2 from "../assets/img/reflect.png";
+import projImg3 from "../assets/img/syncly.png";
+import weather from "../assets/img/weather.png";
+import email from "../assets/img/email-assistant.png";
+import reckls from "../assets/img/reckls.png";
 
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
@@ -19,36 +21,36 @@ export const Projects = () => {
       imgUrl: projImg1,
     },
     {
-      title: "Atmos",
-      description: "Weather App",
-      url: "https://atmos-murex.vercel.app/",
+      title: "Syncly",
+      description: "A real-time collaborative platform",
+      url: "https://syncly-docs.vercel.app/",
       imgUrl: projImg3,
     },
     {
-      title: "Fotographiya",
-      description: "Photography Website",
-      url: "https://www.fotographiya.com/",
+      title: "Reflect",
+      description: "Journaling App",
+      url: "https://reflect-journal-web.vercel.app/",
       imgUrl: projImg2,
     },
   ];
   const projects2 = [
     {
-      title: "Admin Dashboard",
-      description: "Front-end Dashboard Website",
-      url: "https://admin-dashboard-manuj.vercel.app/",
-      imgUrl: dashboard,
+      title: "Atmos",
+      description: "Weather Dashboard",
+      url: "https://atmos-murex.vercel.app/",
+      imgUrl: weather,
     },
     {
-      title: "Personal Portfolio",
-      description: "Portfolio Website",
-      url: "https://portfolio-livid-five-27.vercel.app/",
-      imgUrl: projImg3,
+      title: "Email Reply Assistant",
+      description: "Chrome Extension",
+      url: "https://github.com/manuj-chadha/email-reply-assistant",
+      imgUrl: email,
     },
     {
-      title: "Fotographiya",
-      description: "Photography Website",
-      url: "https://www.fotographiya.com/",
-      imgUrl: projImg2,
+      title: "Reckls Entertainment",
+      description: "Freelance Project",
+      url: "https://reckls.vercel.app/",
+      imgUrl: reckls,
     },
   ];
 
@@ -65,14 +67,14 @@ export const Projects = () => {
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="first">Main Projects</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                      <Nav.Link eventKey="second">Small Projects</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                       <Nav.Link eventKey="third">Tab 3</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     <Tab.Pane eventKey="first">
@@ -103,9 +105,9 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="third">
+                    {/* <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
+                    </Tab.Pane> */}
                   </Tab.Content>
                 </Tab.Container>
               </div>}

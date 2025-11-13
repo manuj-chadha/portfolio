@@ -28,7 +28,7 @@ export const NavBar = () => {
 
   return (
     <Router>
-      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-300 ease-in-out max-md:!pt-3 ${scrolled ? "bg-[#121212] py-0" : "py-1"} px-4`}>
+      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-300 ease-in-out max-md:!pt-3 ${scrolled ? "bg-[#121212] py-0" : "py-0"} px-4`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="text-white font-bold text-3xl max-md:text-2xl">
@@ -48,9 +48,9 @@ export const NavBar = () => {
 
           {/* Navigation Links */}
           <div
-            className={`items-center gap-6 ${
+            className={`items-center gap-x-6 ${
               toggleMenu ? "flex" : "hidden"
-            } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-[#121212] md:bg-transparent px-4 md:px-0 py-4 md:py-0 z-[9998]`}
+            } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-[#121212] md:bg-transparent px-4 md:px-0 py-3 md:py-0 z-[9998]`}
           >
             <a
               href="#home"
