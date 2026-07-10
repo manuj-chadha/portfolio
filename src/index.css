@@ -1,16 +1,199 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.06);
+  --color-brand-start: #aa367c;
+  --color-brand-end: #4a2fbd;
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
 
-body {
-    /* margin: 0; */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+@layer base {
+  body {
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-brand-start), var(--color-brand-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, var(--color-brand-start), var(--color-brand-end));
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--color-bg-secondary), var(--color-bg-secondary)) padding-box,
+      linear-gradient(135deg, rgba(170, 54, 124, 0.4), rgba(74, 47, 189, 0.4)) border-box;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+  }
+
+  .glass-strong {
+    background: rgba(10, 10, 15, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 60px rgba(170, 54, 124, 0.15), 0 0 120px rgba(74, 47, 189, 0.1);
+  }
+
+  .section-label {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.2em] text-brand-start mb-3;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl sm:text-5xl font-bold text-text-primary tracking-tight;
+  }
+
+  .section-subheading {
+    @apply text-text-secondary mt-4 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed;
+  }
+
+  .animate-updown {
+    animation: updown 4s ease-in-out infinite;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .animate-grid-drift {
+    animation: gridDrift 20s linear infinite;
+  }
+
+  .animate-float-1 {
+    animation: floatTag 6s ease-in-out infinite;
+  }
+
+  .animate-float-2 {
+    animation: floatTag 7s ease-in-out infinite 1s;
+  }
+
+  .animate-float-3 {
+    animation: floatTag 5s ease-in-out infinite 0.5s;
+  }
+
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+  }
+
+  .card-shine:hover::after {
+    transform: translateX(100%);
+  }
+}
+
+body.performance-lite .glass,
+body.performance-lite .glass-strong {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.performance-lite .animate-glow-pulse,
+body.performance-lite .animate-grid-drift,
+body.performance-lite .animate-updown,
+body.performance-lite .animate-float-1,
+body.performance-lite .animate-float-2,
+body.performance-lite .animate-float-3 {
+  animation: none !important;
+}
+
+body.performance-lite .hero-glow {
+  display: none;
+}
+
+body.performance-lite .card-shine::after {
+  display: none;
+}
+
+body.performance-lite .glow-brand {
+  box-shadow: none;
+}
+
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+@keyframes updown {
+  0%, 100% { transform: translateY(-12px); }
+  50% { transform: translateY(12px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes gridDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}

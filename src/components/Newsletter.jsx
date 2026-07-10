@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Alert } from "react-bootstrap";
 
 export const Newsletter = ({ status, message, onValidated }) => {
   const [email, setEmail] = useState('');
@@ -10,43 +9,46 @@ export const Newsletter = ({ status, message, onValidated }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    email &&
-      email.indexOf("@") > -1 &&
-      onValidated({
-        EMAIL: email
-      });
+    if (email && email.indexOf("@") > -1) {
+      onValidated({ EMAIL: email });
+    }
   };
 
-  const clearFields = () => {
-    setEmail('');
-  };
+  const clearFields = () => setEmail('');
 
   return (
-    <section className="bg-white text-black font-semibold w-full flex justify-center items-center rounded-xl ">
-      <div className="p-8 rounded-2xl shadow-xl w-full animate-fadeInUp">
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
-          Subscribe to our Newsletter <br /> & Never miss latest updates
+    <section className="w-full max-w-2xl mx-auto px-4">
+      <div className="glass rounded-2xl p-8 sm:p-10 animate-fadeInUp border border-white/10">
+        <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2">
+          Stay Updated
         </h3>
+        <p className="text-zinc-400 text-sm mb-6">
+          Subscribe to the newsletter and never miss the latest updates.
+        </p>
 
-        {/* Alerts */}
-        {status === 'sending' && <Alert variant="info">Sending...</Alert>}
-        {status === 'error' && <Alert variant="danger">{message}</Alert>}
-        {status === 'success' && <Alert variant="success">{message}</Alert>}
+        {status === 'sending' && (
+          <p className="text-sm text-blue-400 mb-4">Sending...</p>
+        )}
+        {status === 'error' && (
+          <p className="text-sm text-red-400 mb-4">{message}</p>
+        )}
+        {status === 'success' && (
+          <p className="text-sm text-green-400 mb-4">{message}</p>
+        )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-4 mt-4">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-3">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email Address"
-            className="flex-1 px-4 py-3 border-2 border-purple-500 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Enter your email"
+            className="flex-1 px-5 py-3 rounded-xl glass text-white text-sm placeholder:text-zinc-500 focus:border-white/20 focus:bg-white/[0.06] transition-all"
           />
           <button
             type="submit"
-            className="bg-purple-600 text-black px-6 py-3 !rounded-xl font-bold hover:bg-purple-700 transition"
+            className="bg-brand-gradient text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:shadow-lg hover:shadow-purple-500/20 hover:scale-[1.02] whitespace-nowrap"
           >
-            Submit
+            Subscribe
           </button>
         </form>
       </div>

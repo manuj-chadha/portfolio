@@ -1,49 +1,47 @@
-import { MailchimpForm } from "./MailchimpForm";
-import logo from "../assets/img/logo.svg";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/nav-icon2.svg";
 import navIcon3 from "../assets/img/nav-icon3.svg";
 
+const socialLinks = [
+  { href: "https://www.linkedin.com/in/manuj-chadha", icon: navIcon1, label: "LinkedIn" },
+  { href: "https://github.com/manuj-chadha", icon: navIcon2, label: "GitHub" },
+  { href: "https://www.instagram.com/manuuujjjjjj", icon: navIcon3, label: "Instagram" },
+];
+
 export const Footer = () => {
   return (
-    <footer
-      className="py-8 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('./src/assets/img/footer-bg.png')" }}
-    >
-      <div className="container mx-auto py-6">
-        <div className="flex flex-col relative gap-10 lg:flex-row justify-between items-center">
+    <footer className="relative bg-[#08080d] py-10">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-          {/* Left: Newsletter */}
-          <div className="w-full flex absolute -top-36 rounded-xl justify-center lg:justify-center">
-            <MailchimpForm />
-          </div>
-
-          <div className="mt-56 lg:mt-36 flex flex-col lg:flex-row w-full justify-between items-center0">
-            {/* Center: Name or Logo */}
-          <div className="w-full lg:w-fit text-center">
-            <h1 className="text-white text-2xl font-bold lg:text-start mb-2">Manuj Chadha</h1>
-            {/* <img src={logo} alt="Manuj Chadha" className="mx-auto w-24" /> */}
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+          <div className="text-center lg:text-left">
+            <h2 className="font-display text-2xl font-bold text-white mb-1">
+              Manuj Chadha
+            </h2>
+            <p className="text-zinc-500 text-sm">Full-Stack Developer</p>
           </div>
 
-          {/* Right: Social Links & Copyright */}
-          <div className="w-full flex flex-col justify-center items-center lg:w-fit text-center lg:text-right">
-            <div className="flex justify-center lg:justify-end gap-4 mb-4">
-              <a href="https://www.linkedin.com/in/manuj-chadha">
-                <img src={navIcon1} alt="LinkedIn" className="w-6 hover:scale-110 transition" />
+          <div className="flex items-center gap-3">
+            {socialLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.label}
+                className="w-10 h-10 rounded-full glass flex items-center justify-center group hover:border-white/20 transition-all duration-300 hover:scale-110"
+              >
+                <img src={item.icon} alt="" className="w-[18px] opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
-              <a href="https://github.com/manuj-chadha">
-                <img src={navIcon2} alt="GitHub" className="w-6 hover:scale-110 transition" />
-              </a>
-              <a href="https://www.instagram.com/manuuujjjjjj">
-                <img src={navIcon3} alt="Instagram" className="w-6 hover:scale-110 transition" />
-              </a>
-            </div>
-            <p className="text-sm text-gray-400 tracking-wide leading-relaxed">
-              Made with ♡<br />
-              Copyright 2025. All Rights Reserved
-            </p>
+            ))}
           </div>
-          </div>
+
+          <p className="text-sm text-zinc-600 text-center lg:text-right">
+            Made with love ♥︎
+            <br />
+            &copy; {new Date().getFullYear()} Manuj Chadha. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

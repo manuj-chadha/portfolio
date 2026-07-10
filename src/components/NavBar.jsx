@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
 import { HashLink } from 'react-router-hash-link';
-import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
+const navLinks = [
+  { id: 'home', label: 'Home', href: '#home' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'projects', label: 'Projects', href: '#projects' },
+];
+
+const socialLinks = [
+  { href: "https://www.linkedin.com/in/manuj-chadha", icon: navIcon1, label: "LinkedIn" },
+  { href: "https://github.com/manuj-chadha", icon: navIcon2, label: "GitHub" },
+  { href: "https://www.instagram.com/manuuujjjjjj", icon: navIcon3, label: "Instagram" },
+];
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
@@ -16,7 +26,18 @@ export const NavBar = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
+      const scrollPos = window.scrollY + 120;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].offsetTop <= scrollPos) {
+          setActiveLink(sections[i].id);
+          break;
+        }
+      }
     };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -28,82 +49,64 @@ export const NavBar = () => {
 
   return (
     <Router>
-      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-300 ease-in-out max-md:!pt-3 ${scrolled ? "bg-[#121212] py-0" : "py-0"} px-4`}>
+      <nav className={`fixed top-0 w-full z-[9999] transition-all duration-500 ${scrolled ? "glass-strong py-3" : "py-5 bg-transparent"} px-4 lg:px-8`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="text-white font-bold text-3xl max-md:text-2xl">
+          <a href="/" className="font-display text-white font-bold text-lg sm:text-xl lg:text-2xl tracking-tight">
             Manuj Chadha
           </a>
 
-          {/* Toggler for Mobile */}
-          <div className="md:hidden flex flex-col items-center">
-            <button
-              onClick={() => setToggleMenu(!toggleMenu)}
-              className="text-white focus:outline-none relative w-6 h-4"
-            >
-              <span className={`block w-full h-[2px] bg-white absolute transition-transform duration-300 ease-in-out ${toggleMenu ? "rotate-45 top-2" : "top-0"}`}></span>
-              <span className={`block w-full h-[2px] bg-white absolute transition-transform duration-300 ease-in-out ${toggleMenu ? "-rotate-45 top-2" : "top-[8px]"}`}></span>
-            </button>
-          </div>
-
-          {/* Navigation Links */}
-          <div
-            className={`items-center gap-x-6 ${
-              toggleMenu ? "flex" : "hidden"
-            } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-[#121212] md:bg-transparent px-4 md:px-0 py-3 md:py-0 z-[9998]`}
+          <button
+            onClick={() => setToggleMenu(!toggleMenu)}
+            className="md:hidden text-white focus:outline-none relative w-7 h-5"
+            aria-label="Toggle menu"
           >
-            <a
-              href="#home"
-              onClick={() => onUpdateActiveLink('home')}
-              className={`text-lg font-medium transition-opacity duration-200 ${activeLink === 'home' ? 'text-white opacity-100' : 'text-white opacity-75 hover:opacity-100'}`}
-            >
-              Home
-            </a>
-            <a
-              href="#skills"
-              onClick={() => onUpdateActiveLink('skills')}
-              className={`text-lg font-medium transition-opacity duration-200 ${activeLink === 'skills' ? 'text-white opacity-100' : 'text-white opacity-75 hover:opacity-100'}`}
-            >
-              Skills
-            </a>
-            <a
-              href="#projects"
-              onClick={() => onUpdateActiveLink('projects')}
-              className={`text-lg font-medium transition-opacity duration-200 ${activeLink === 'projects' ? 'text-white opacity-100' : 'text-white opacity-75 hover:opacity-100'}`}
-            >
-              Projects
-            </a>
+            <span className={`block w-full h-[2px] bg-white absolute transition-all duration-300 ${toggleMenu ? "rotate-45 top-[9px]" : "top-0"}`} />
+            <span className={`block w-full h-[2px] bg-white absolute top-[9px] transition-all duration-300 ${toggleMenu ? "opacity-0" : "opacity-100"}`} />
+            <span className={`block w-full h-[2px] bg-white absolute transition-all duration-300 ${toggleMenu ? "-rotate-45 top-[9px]" : "top-[18px]"}`} />
+          </button>
 
-            {/* Social Icons */}
-            <div className="flex items-center md:ml-6 gap-2">
-              {[{
-                href: "https://www.linkedin.com/in/manuj-chadha",
-                icon: navIcon1
-              }, {
-                href: "https://github.com/manuj-chadha",
-                icon: navIcon2
-              }, {
-                href: "https://www.instagram.com/manuuujjjjjj",
-                icon: navIcon3
-              }].map((item, index) => (
+          <div
+            className={`items-center gap-x-8 ${
+              toggleMenu ? "flex" : "hidden"
+            } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto glass-strong md:glass md:!bg-transparent md:!border-0 md:!backdrop-filter-none px-6 md:px-0 py-6 md:py-0 z-[9998] rounded-b-2xl md:rounded-none`}
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={() => onUpdateActiveLink(link.id)}
+                className={`relative text-[15px] font-medium transition-colors duration-200 py-1 ${
+                  activeLink === link.id
+                    ? 'text-white'
+                    : 'text-zinc-400 hover:text-white'
+                }`}
+              >
+                {link.label}
+                {activeLink === link.id && (
+                  <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-brand-gradient rounded-full" />
+                )}
+              </a>
+            ))}
+
+            <div className="flex items-center gap-2.5 md:ml-2">
+              {socialLinks.map((item) => (
                 <a
-                  key={index}
+                  key={item.label}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="relative w-[42px] h-[42px] group-hover:text-black rounded-full bg-white/10 border border-white/50 flex items-center justify-center overflow-hidden group"
+                  aria-label={item.label}
+                  className="relative w-10 h-10 rounded-full glass flex items-center justify-center overflow-hidden group hover:border-white/20 transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-white scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out rounded-full z-0" />
-                  <img src={item.icon} alt="" className="max-w-[40%] z-10 relative transition-all duration-300 filter group-hover:invert" />
+                  <div className="absolute inset-0 bg-brand-gradient scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
+                  <img src={item.icon} alt="" className="w-[18px] z-10 relative transition-all duration-300 group-hover:brightness-0 group-hover:invert" />
                 </a>
               ))}
             </div>
 
-            {/* Button */}
-            <HashLink to="#connect" className="ml-4">
-              <button className="relative border border-white text-white font-bold text-lg px-3 py-3 group-hover:rounded-xl overflow-hidden group">
-                <span className="z-[1] relative group-hover:text-black">Let’s Connect</span>
-                <span className="absolute left-0 top-0 w-0 h-full bg-white transition-all duration-300 ease-in-out group-hover:w-full z-[-1]"></span>
+            <HashLink to="#connect" className="md:ml-2" onClick={() => setToggleMenu(false)}>
+              <button className="relative bg-brand-gradient text-white font-semibold text-sm px-5 py-2.5 rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-[1.02]" data-cursor-hover>
+                Let's Connect
               </button>
             </HashLink>
           </div>
